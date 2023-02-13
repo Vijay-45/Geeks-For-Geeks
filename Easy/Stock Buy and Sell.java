@@ -26,3 +26,26 @@ public class Main
 	    
 	}
 }
+_______________________________________________________________________________________________________________________________________________________________________
+
+//Time Complexity - O(n)
+//Auxilary Space - O(1)
+
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr={1,5,3,8,12};
+		System.out.println(Solve(arr));
+	}
+	static int Solve(int[] arr){
+	  int n=arr.length;
+	  int p=0;
+	  for(int i=1;i<n;i++){
+	      if(arr[i]>arr[i-1]){
+	          p+=(arr[i]-arr[i-1]);
+	      }
+	  }
+	  return p;
+	    
+	}
+}
