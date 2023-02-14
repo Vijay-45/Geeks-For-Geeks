@@ -49,3 +49,43 @@ public class Main
 	    
 	}
 }
+_____________________________________________________________________________________________________________________________________________________________________
+
+//Time Complexity - O(n)
+//Auxilary Space - O(n)
+
+class Solution{
+    //Function to find the days of buying and selling stock for max profit.
+    ArrayList<ArrayList<Integer> > stockBuySell(int arr[], int n) {
+        // code here
+        ArrayList<ArrayList<Integer>> x=new ArrayList<ArrayList<Integer>>();
+	    int s=0,e=0;
+	    boolean flag=false;
+	    for(int i=1;i<n;i++){
+	        if(arr[i]==arr[i-1]){
+	            continue;
+	        }
+	        if(arr[i]<arr[i-1] && flag==false){
+	            continue;
+	        }
+	        if(arr[i]>arr[i-1] && flag==true){
+	            e=i;
+	        }
+	        if(arr[i]>arr[i-1] && flag==false){
+	            s=i-1;
+	            e=i;
+	            flag=true;
+	        }
+	        if(arr[i]<arr[i-1] && flag==true){
+	            flag=false;
+	            e=i-1;
+	            x.add(new ArrayList<Integer>(Arrays.asList(s,e)));
+	        }
+	        if(e==n-1){
+	            x.add(new ArrayList<Integer>(Arrays.asList(s,n-1)));
+	        }
+	    }
+	    return x;
+    }
+}
+
