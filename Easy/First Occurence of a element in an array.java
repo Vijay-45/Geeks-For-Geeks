@@ -43,7 +43,9 @@ public class Main
 	    System.out.println(First_Occurence(arr,n,k,0,n-1));
 	}
 	static int First_Occurence(int[] arr,int n,int k,int l,int h){
-	    while(l<=h){
+	        if(l>h){
+	            return -1;
+	        }
 	        int mid=l+(h-l)/2;
 	        if((mid==0 || k>arr[mid-1]) && arr[mid]==k){
 	            return mid;
@@ -54,7 +56,5 @@ public class Main
 	        else{
 	            return First_Occurence(arr,n,k,l,mid-1);
 	        }
-	    }
-	    return 0;
 	}
 }
