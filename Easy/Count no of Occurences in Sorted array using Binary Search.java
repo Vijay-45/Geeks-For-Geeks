@@ -11,7 +11,10 @@ public class Main
 	    int n=arr.length;
 	    int i=First_Occurence(arr,0,n-1,k,n);
 	    int j=Last_Occurence(arr,0,n-1,k,n);
-	    int res=j-i+1;
+	    if(i==-1) res=0;
+	    else{
+		  res=(j-i+1)
+		}
 	    System.out.println(res);
 	}
 	static int First_Occurence(int[] arr,int l,int h,int k,int n){
