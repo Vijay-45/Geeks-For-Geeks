@@ -19,7 +19,7 @@ public class Main
 	        if((mid==0 || arr[mid-1]<=arr[mid]) && (mid==n-1 || arr[mid+1]<=arr[mid])){
 	            return mid;
 	        }
-	        else if(mid>0 && arr[mid-1]>arr[mid]){
+	        else if(mid>0 && arr[mid-1]>=arr[mid]){
 	            h=mid-1;
 	        }
 	        else{
@@ -49,10 +49,10 @@ public class Main
 	static int Solve(int[] arr){
 	    int n=arr.length;
 	    if(n==1) return arr[0];
-	    if(arr[0]>arr[1]) return arr[0];
-	    if(arr[n-1]>arr[n-2]) return arr[n-1];
+	    if(arr[0]>=arr[1]) return arr[0];
+	    if(arr[n-1]>=arr[n-2]) return arr[n-1];
 	    for(int i=1;i<n-1;i++){
-	        if(arr[i]>arr[i-1] && arr[i]>arr[i+1]){
+	        if(arr[i]>=arr[i-1] && arr[i]>=arr[i+1]){
 	            return arr[i];
 	        }
 	    }
