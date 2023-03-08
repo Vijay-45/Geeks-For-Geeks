@@ -1,7 +1,7 @@
 
 
 //Time Complexity - O(Logn)
-//Auxilary Space - O(1)
+//Auxilary Space - O(Logn)
 
 
 public class Main
