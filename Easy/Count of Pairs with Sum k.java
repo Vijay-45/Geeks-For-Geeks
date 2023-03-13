@@ -39,3 +39,33 @@ public class Main
 	    return count;
 	}
 }
+______________________________________________________________________________________________________________________________
+
+
+//Time Complexity - O(n)
+//Auxilary Space - O(n)
+
+
+
+
+class Solution {
+    int getPairsCount(int[] arr, int n, int k) {
+        // code here\
+        int count=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<n;i++){
+            int temp=k-arr[i];
+            if(map.containsKey(temp)){
+                count+=map.get(temp);
+            }
+            if(map.containsKey(arr[i])){
+                map.put(arr[i],map.get(arr[i])+1);
+            }
+            else{
+                map.put(arr[i],1);
+            }
+        }
+        return count;
+    }
+}
+
