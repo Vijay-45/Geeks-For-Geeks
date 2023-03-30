@@ -91,3 +91,54 @@ public class Main
 	    return i+1;
 	}
 }
+
+
+______________________________________________________________________________________________________________________________
+
+
+
+//Time complexity - O(nlogn)
+//Auxilary Space - O(logn)
+
+
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr = {10,17,18,9,11,15};
+		int n=arr.length;
+		quickPartition(arr,0,n-1);
+		
+		for(int i:arr){
+		    System.out.print(i+" ");
+		}
+	}
+	static void quickPartition(int[] arr,int l,int h){
+	    if(l<h){
+	        int m = HoaresPartition(arr,l,h);
+	        quickPartition(arr,l,m);
+	        quickPartition(arr,m+1,h);
+	    }
+	}
+	static int HoaresPartition(int[] arr,int l,int h){
+	    int p=arr[l];
+	    int i=l-1,j=h+1;
+	    
+	    while(true){
+	        do{
+	            i++;
+	        }while(arr[i]<p);
+	        do{
+	            j--;
+	        }while(arr[j]>p);
+	        if(i>=j){
+	            return j;
+	        }
+	        int temp = arr[i];
+	        arr[i]=arr[j];
+	        arr[j]=temp;
+	    }
+	}
+}
