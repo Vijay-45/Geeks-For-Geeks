@@ -1,7 +1,7 @@
 
 
 //Time Complexity - O(nlogn)
-//Auxilary Space  - O(logn)
+//Auxilary Space  - O(nlogn)
 
 
 //Naive Partition....
