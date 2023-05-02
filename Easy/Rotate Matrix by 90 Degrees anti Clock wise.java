@@ -29,3 +29,42 @@ public class Main
 	    }
 	}
 }
+
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+//Time Complexity - O(n^2)
+//Auxilary Space - O(1)
+
+
+
+
+
+class Solution
+{
+    //Function to rotate matrix anticlockwise by 90 degrees.
+    static void rotateby90(int arr[][], int n) 
+    { 
+        // code here
+        int temp=0;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                temp=arr[i][j];
+                arr[i][j]=arr[j][i];
+                arr[j][i]=temp;
+            }
+        }
+        for(int i=0;i<n;i++){
+            int low=0,high=n-1;
+            while(low<high){
+                temp=arr[low][i];
+                arr[low][i]=arr[high][i];
+                arr[high][i]=temp;
+                low++;high--;
+            }
+        }
+    }
+}
+
+
+
