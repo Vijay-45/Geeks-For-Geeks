@@ -23,3 +23,38 @@ class Solution
         return list;
     }
 }
+
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+//Time Complxity - O(n)
+//Auxilary Space - O(k)
+
+
+class Solution
+{
+    //Function to find maximum of each subarray of size k.
+    static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
+    {
+        // Your code here
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        Deque<Integer> q = new ArrayDeque<>();
+        for(int i=0;i<n;i++){
+            while((!q.isEmpty())&& q.peek()==i-k){
+                q.poll();
+            }
+            
+            while((!q.isEmpty()) && arr[q.peekLast()]<=arr[i]){
+                q.pollLast();
+            }
+            q.offer(i);
+            if(i>=k-1){
+                list.add(arr[q.peek()]);
+            }
+        }
+        return list;
+    }
+}
