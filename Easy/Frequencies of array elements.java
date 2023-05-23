@@ -1,3 +1,44 @@
+
+
+//Time Complexity  -O(n^2)
+//Auxilary Space - O(n)
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    int[] arr={10,20,20,10,30};
+	    Solve(arr);
+	}
+	static void Solve(int[] arr){
+	    int n=arr.length;
+	    boolean[] vis=new boolean[n];
+	    Arrays.fill(vis,false);
+	    for(int i=0;i<n;i++){
+	        if(vis[i]==true){
+	            continue;
+	        }
+	        int count=1;
+	        for(int j=i+1;j<n;j++){
+	            if(arr[i]==arr[j]){
+	                vis[j]=true;
+	                count++;
+	            }
+	        }
+	        System.out.println(arr[i]+" "+count);
+	    }
+	       
+	}
+}
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+//Time Complexity - O(n^2)
+//Auxilary Space - O(1)
+
+
+
 public class Main
 {
 	public static void main(String[] args) {
@@ -58,8 +99,6 @@ public class Main
 }
 
 
-//Time Complexity - O(n^2)
-//Auxilary Space - o(1)
 
 
 
