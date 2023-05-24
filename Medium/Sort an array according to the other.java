@@ -47,3 +47,53 @@ class Solution{
         return arr;
     }
 }
+
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+
+//Time Complexity  - O(n*logn)
+//Auxilary Space - O(n)
+
+
+
+
+
+class Solution{
+    // A1[] : the input array-1
+    // N : size of the array A1[]
+    // A2[] : the input array-2
+    // M : size of the array A2[]
+    
+    //Function to sort an array according to the other array.
+    public static int[] sortA1ByA2(int arr[], int n, int arr1[], int m)
+    {
+        //Your code here
+       HashMap<Integer,Integer> map = new HashMap<>();
+       int[] res=new int[n];
+       int temp=0,index=0,one=0;
+       for(int i=0;i<n;i++){
+           map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+       }
+       for(int i=0;i<m;i++){
+           if(map.containsKey(arr1[i])){
+               temp=map.get(arr1[i]);
+               while(temp-->0){
+                   res[index++]=arr1[i];
+               }
+               map.remove(arr1[i]);
+           }
+       }
+       one=index;
+       Set<Integer> set =map.keySet();
+       for(int x:set){
+           temp=map.get(x);
+           while(temp-->0){
+               res[index++]=x;
+           }
+       }
+       Arrays.sort(res,one,res.length);
+       return res;
+    }
+}
+
