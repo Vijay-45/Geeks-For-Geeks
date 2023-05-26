@@ -27,3 +27,41 @@ public class Main
 	    return count;
 	}
 }
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+
+//Time Complexity - O(n)
+//Auxilary Space - o(n)
+
+
+
+
+
+
+
+class Solution{
+    //Function to count subarrays with sum equal to 0.
+    public static long findSubarray(long[] arr ,int n) 
+    {
+        //Your code here
+        long count=0,preSum=0;
+        HashMap<Long,Integer> map = new HashMap<>();
+        for(int i=0;i<n;i++){
+            preSum+=arr[i];
+            if(preSum==0) count++;
+            if(map.containsKey(preSum)){
+                map.put(preSum,map.get(preSum)+1);
+            }
+            else{
+                map.put(preSum,1);
+            }
+        }
+        
+        for(Map.Entry<Long,Integer> entry:map.entrySet()){
+            long temp = entry.getValue();
+            count+=(temp*(temp-1))/2;
+        }
+        return count;
+    }
+}
