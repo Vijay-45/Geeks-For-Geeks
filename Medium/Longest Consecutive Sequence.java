@@ -28,3 +28,40 @@ public class Main
 	    return Math.max(res,curr);
 	}
 }
+
+
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+//Time Complexity - o(n)
+//Auxilary Space - o(n)
+
+
+
+class Solution
+{   
+    // arr[] : the input array
+    // N : size of the array arr[]
+    
+    //Function to return length of longest subsequence of consecutive integers.
+	static int findLongestConseqSubseq(int arr[], int n)
+	{
+	   // add your code here
+	   HashSet<Integer> set = new HashSet<>();
+	   int curr=1,res=1;
+	   for(int i=0;i<n;i++){
+	       set.add(arr[i]);
+	   }
+	   
+	   for(int i=0;i<n;i++){
+	       if(!set.contains(arr[i]-1)){
+	           curr=1;
+	           while(set.contains(arr[i]+curr)){
+	               curr++;
+	           }
+	           res=Math.max(res,curr);
+	       }
+	   }
+	   return res;
+	}
+}
