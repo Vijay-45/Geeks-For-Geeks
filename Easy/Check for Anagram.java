@@ -71,3 +71,39 @@ public class Main
 	    return temp.equals(temp1);
 	}
 }
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+//Time Complexity - O(n)
+//Auxilary Space  - O(256)
+
+
+
+
+
+
+
+class Solution
+{    
+    //Function is to check whether two strings are anagram of each other or not.
+    public static boolean isAnagram(String a,String b)
+    {
+        if(a.length()!=b.length()){
+            return false;
+        }
+        int n=a.length();
+        int[] arr=new int[256];
+        for(int i=0;i<n;i++){
+            arr[a.charAt(i)]++;
+            arr[b.charAt(i)]--;
+        }
+        for(int i=0;i<256;i++){
+            if(arr[i]!=0){
+                return false;
+            }
+        }
+        return true;
+        // Your code here
+        
+    }
+}
