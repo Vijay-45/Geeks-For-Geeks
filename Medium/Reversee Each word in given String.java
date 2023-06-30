@@ -31,3 +31,34 @@ class Solution
         return res;
     }
 }
+______________________________________________________________________________________________________________________________________________________________________________
+
+
+
+//Time Complexity - O(n)
+//Auxilary Space - O(n)
+
+
+
+class Solution
+{
+   
+    String reverseWords(String s)
+    {
+        // your code here
+        int n=s.length();
+        String[] arr=s.split("\\.",s.length());
+        StringBuilder sb;
+        for(int i=0;i<arr.length;i++){
+            sb=new StringBuilder(arr[i]);
+            sb.reverse();
+            arr[i]=String.valueOf(sb);
+        }
+        sb=new StringBuilder(arr[0]);
+        for(int i=1;i<arr.length;i++){
+            sb.append(".");
+            sb.append(arr[i]);
+        }
+        return String.valueOf(sb);
+    }
+}
