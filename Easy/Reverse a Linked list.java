@@ -5,6 +5,7 @@
 
 
 
+//using Three pointers..
 
 class Solution
 {
@@ -26,3 +27,50 @@ class Solution
       
     }
 }
+
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+//using Two Pointers..
+
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Node head=new Node(10);
+	    head.next=new Node(20);
+	    head.next.next=new Node(30);
+	    head.next.next.next=new Node(40);
+	    
+	    head=Reverse(head);
+	    Print(head);
+	}
+	static void Print(Node head){
+	    while(head!=null){
+	        System.out.print(head.data+" ");
+	        head=head.next;
+	    }
+	    System.out.println();
+	}
+	static Node Reverse(Node head){
+	    Node curr=head;
+	    Node next=null;
+	    while(curr.next!=null){
+	        next=curr.next;
+	        curr.next=next.next;
+	        next.next=head;
+	        head=next;
+	    }
+	    return head;
+	}
+}
+class Node{
+    int data;
+    Node next;
+    Node(int x){
+        this.data=x;
+    }
