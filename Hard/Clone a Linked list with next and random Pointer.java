@@ -59,3 +59,44 @@ class Node{
         this.data=x;
     }
 }
+
+
+_____________________________________________________________________________________________________________________________
+
+
+//Time Complexity - O(n)
+//Auxilary Space - O(1)
+
+
+
+
+
+class Clone {
+    //Function to clone a linked list with next and random pointer.
+    Node copyList(Node head) {
+        // your code here
+
+	//Inserting duplicate nodes between the original nodes 
+        for(Node curr=head;curr!=null;curr=curr.next.next){
+            Node temp=new Node(curr.data);
+            temp.next=curr.next;
+            curr.next=temp;
+        }
+        //Connecting the random for the new nodes just as the orginal nodes 
+        for(Node curr=head;curr!=null;curr=curr.next.next){
+            curr.next.arb=(curr.arb==null)?null:curr.arb.next;
+        }
+
+//Separating the Orginal and duplicate nodes so by changing the links so that we get the clone list
+	    
+        Node res=head.next;
+        Node clone=res;
+        for(Node curr=head;curr!=null;curr=curr.next){
+            curr.next=curr.next.next;
+            clone.next=(clone.next!=null)?clone.next.next:null;
+            clone=clone.next;
+        }
+        
+        return res;
+    }
+}
