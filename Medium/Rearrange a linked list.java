@@ -47,3 +47,27 @@ class Solution
           
      }
 }
+
+
+_____________________________________________________________________________________________________________________________
+
+
+//Time Complexity - O(n)
+//Auxilary Space - O(1)
+
+
+
+static Node Solve(Node head){
+	    if(head==null || head.next==null) return head;
+	    Node odd=head,even=odd.next,temp=head.next;
+   //For even no of nodes even.next becomes null and for odd no of nodes even becomes null
+	    while(even!=null && even.next!=null){
+	        odd.next=odd.next.next;
+	        even.next=even.next.next;
+	        odd=odd.next;
+	        even=even.next;
+	    }
+   //Connecting both the nodes
+	    odd.next=temp;
+	    return head;
+	}
