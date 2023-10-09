@@ -17,7 +17,7 @@ public class Main
 	   while(l<=h){
 	       int mid=l+(h-l)/2;
 	       if(arr[mid]==x) return mid;
-	       else if(arr[mid]>arr[l]){
+	       else if(arr[mid]>=arr[l]){
 	           if(x>=arr[l] && x<arr[mid]){
 	               h=mid-1;
 	           }
