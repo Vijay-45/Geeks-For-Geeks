@@ -48,3 +48,80 @@ public class Main
 	}
 	
 }
+
+_____________________________________________________________________________________________________________________________
+
+//Time Complexity - O(n)
+//Auxilary Space - O(n)
+
+
+
+/*
+we do this using previous smaller element and next smaller element we calculate both for the elements in the array.
+and calculte the max width of the bar.
+*/
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr={6,2,5,4,1,5,6};
+		System.out.print(Solve(arr));
+	}
+	static int Solve(int[] arr){
+	    int n=arr.length;
+	    int[] ps=previousSmaller(arr);
+	    int[] ns=nextSmaller(arr);
+	    int res=0,curr=0;
+	    for(int i=0;i<n;i++){
+	        curr=arr[i];
+	        curr+=(i-ps[i]-1)*arr[i]; //previous index is less then current index hence we used i-ps[i] and -1 after that to exculding current element
+	        curr+=(ns[i]-i-1)*arr[i]; //next index is greater then curent index hence we used ns[i]-i and -1 to exculude current element.
+	        
+	        res=Math.max(res,curr);  //max value for every element
+	    }
+	    return res;
+	}
+	static int[] previousSmaller(int[] arr){
+	    int n=arr.length;
+	    Stack<Integer> stack=new Stack<>();
+	    int[] res=new int[n];
+	    res[0]=-1;
+	    stack.push(0);
+	    for(int i=1;i<n;i++){
+	        while(!stack.isEmpty() && arr[stack.peek()]>=arr[i]){
+	            stack.pop();
+	        }
+	        if(stack.isEmpty()){
+	            res[i]=-1;
+	        }
+	        else{
+	            res[i]=stack.peek();
+	        }
+	        stack.push(i);
+	    }
+	    return res;
+	}
+	static int[] nextSmaller(int[] arr){
+	    int n=arr.length;
+	    Stack<Integer> stack=new Stack<>();
+	    int[] res=new int[n];
+	    res[n-1]=n;
+	    stack.push(n-1);
+	    for(int i=n-2;i>=0;i--){
+	        while(!stack.isEmpty() && arr[stack.peek()]>=arr[i]){
+	            stack.pop();
+	        }
+	        if(stack.isEmpty()){
+	            res[i]=n;
+	        }
+	        else{
+	            res[i]=stack.peek();
+	        }
+	        stack.push(i);
+	    }
+	    return res;
+	}
+	
+}
+
