@@ -124,4 +124,55 @@ public class Main
 	}
 	
 }
+____________________________________________________________________________________________________________________________
 
+
+//Time Complexity - O(n)
+//Auxilary Sapce - O(n)
+
+
+/*
+This approach uses only one traversal and uses only one stack
+This one is similar to the stock span problem in stock span we pop peek element when greater value comes whereas in case of 
+current approach we pop peek element when smaller value comes.
+In stock span problme we perform operations while pushing to the stack whereas in case of this approach we perform operations 
+while popping out of the stack.
+After popping we have left smaller element as the peek of the stack and current index is the right smaller element using this 
+we can find the maximum rectangular are like i-stack.peek()-1;
+*/
+
+
+
+public static long getMaxArea(long arr[], long n) 
+    {
+        // your code here
+        long res=0;
+        int temp;
+        long curr;
+        Stack<Integer> stack=new Stack<>();
+        for(int i=0;i<n;i++){
+            while(!stack.isEmpty() && arr[stack.peek()]>=arr[i]){ // if current element is less then peek then perform pop
+                temp=stack.pop();
+		/* 
+                   temp stores the poped elemet and we consider it as the element with maximum area width and calculate using
+		   current index-peek element -1;
+                   current index - left smaller element
+		   peek element - right smaller element
+     
+		*/
+                curr=arr[temp]*(stack.isEmpty()?1:i-stack.peek()-1); 
+                res=Math.max(res,curr);
+            }
+            stack.push(i);
+        }
+        while(!stack.isEmpty()){
+            temp=stack.pop();
+	    /*
+              Here we traversed the entire array and now didnt have the right smaller element thats why we used n value
+	      as right smaller element.
+            */
+            curr=arr[temp]*(stack.isEmpty()?n:n-stack.peek()-1);
+            res=Math.max(res,curr);
+        }
+        return res;
+    }
