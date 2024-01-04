@@ -160,7 +160,7 @@ public static long getMaxArea(long arr[], long n)
 		   peek element - right smaller element
      
 		*/
-                curr=arr[temp]*(stack.isEmpty()?1:i-stack.peek()-1); 
+                curr=arr[temp]*(stack.isEmpty()?i:i-stack.peek()-1); 
                 res=Math.max(res,curr);
             }
             stack.push(i);
